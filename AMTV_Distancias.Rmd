@@ -1,0 +1,316 @@
+---
+title: "Distancias en el Análisis Estadístico Multivariado"
+author: "Escuela Colombiana de Ingeniería Julio Garavito"
+date: "2023-03-28"
+output: slidy_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Temas a tratar
+
+- Introducción al análisis estadístico multivariado
+
+- Distancias en el análisis estadístico multivariado
+
+- Distancia con variables cualitativas
+
+- Distancias con variables cuantitativas
+
+- Distancias con variables mixtas
+
+- Conclusiones
+
+## Analisis estadistico multivariado
+
+El análisis estadístico multivariado es una técnica que permite analizar conjuntos de datos que involucran múltiples variables, estudiando cómo se relacionan entre sí y cómo afectan conjuntamente a un resultado o variable de interés mediante el uso de diversas técnicas estadísticas.
+
+
+## Distancias en el análisis estadístico multivariado
+
+- En el análisis estadístico multivariado, se trabaja con múltiples variables.
+- Las distancias son una medida de la similitud o diferencia entre los objetos (individuos, variables, etc.) en función de estas variables.
+- Son ampliamente utilizadas en análisis de datos, clusterización, clasificación, entre otros.
+- En esta presentación, nos enfocaremos en algunas de las distancias más utilizadas en el análisis estadístico multivariado.
+
+## Selección de la medida de distancia en análisis estadístico multivariado
+
+- La elección de la medida de distancia adecuada depende del objetivo del análisis.
+- Depende del tipo de datos y de la escala de medida de las variables.
+- La elección también puede depender de la estructura de los datos (por ejemplo, si hay datos faltantes o valores extremos).
+- Es importante tener en cuenta las propiedades de las medidas de distancia, como la simetría, la triangularidad y la identidad de los indiscernibles.
+
+
+## Selección de la medida de distancia en análisis estadístico multivariado
+
+- Si el objetivo es encontrar grupos de objetos similares, se pueden utilizar medidas de distancia que enfaticen la similitud, como la distancia euclidiana.
+- Si el objetivo es clasificar objetos en diferentes categorías, se pueden utilizar medidas de distancia que minimicen la variabilidad dentro de cada categoría, como la distancia de Mahalanobis.
+- Si el objetivo es determinar la estructura subyacente de los datos, se pueden utilizar medidas de distancia que revelen patrones de covariación entre las variables, como la distancia de correlación.
+- Si el objetivo es identificar objetos anómalos o extremos, se pueden utilizar medidas de distancia robustas, como la distancia de Minkowski con un valor de p mayor que 1.
+
+
+## Medidas de distancia entre individuos
+
+- La elección de la medida de distancia entre individuos puede depender de la escala de medida de las variables y del tipo de variables. 
+- Si las variables están en diferentes escalas, la distancia euclidiana no será adecuada ya que una variable con una escala más grande tendrá una mayor influencia en la medida de distancia.
+- Si las variables son de tipo categórico o nominal, la distancia euclidiana no se puede utilizar y se deben usar medidas de distancia apropiadas para variables categóricas, como la distancia de Gower.
+- Si las variables son de tipo ordinal, la distancia euclidiana no es la mejor medida y se pueden utilizar medidas de distancia apropiadas para variables ordinales, como la distancia de Spearman.
+- Si las variables son de tipo binario, se puede utilizar la distancia de Hamming.
+- Si las variables son mixtas (numéricas y categóricas), se pueden utilizar medidas de distancia apropiadas para datos mixtos, como la distancia de Gower.
+
+- Si las variables están en diferentes escalas, se pueden utilizar medidas de distancia que tengan en cuenta la variabilidad y la escala de cada variable, como la distancia de Mahalanobis.
+
+## Medidas de distancia entre variables
+
+- La elección de la medida de distancia entre variables también puede depender de la escala de medida y del tipo de variables. 
+
+
+## Distancias con variables cualitativas
+En el análisis multivariado de variables cualitativas, la distancia se refiere a la medida de la diferencia entre dos observaciones o individuos en función de sus características o variables cualitativas. 
+Existen diferentes medidas de distancia que se pueden utilizar en el análisis multivariado de variables cualitativas. Algunas de las más comunes son:
+
+- Distancia Hamming
+
+- Distancia Jaccard
+
+- Distancia Gower
+
+
+## Distancia Hamming
+
+La distancia de Hamming es una medida de la distancia entre dos cadenas de igual longitud. La fórmula para calcular la distancia de Hamming es la siguiente:
+
+$$ D_H(x, y) = \sum_{i=1}^{n} \mathbb{I}(x_i \neq y_i) $$
+Donde $x$ y $y$ son las cadenas que se van a comparar, $n$ es la longitud de las cadenas y $\mathbb{I}(x_i \neq y_i)$ es una función indicadora que devuelve 1 si los caracteres en las posiciones $i$ de $x$ y $y$ son diferentes y 0 en caso contrario.
+
+## Ejemplo
+
+Supongamos que tenemos dos cadenas binarias de la misma longitud,
+x = "0110101" e y = "1100110". Queremos calcular la distancia de Hamming entre estas dos cadenas.
+
+Para ello, podemos utilizar la fórmula anterior, 
+
+$$D_H(x, y) = ∑_{i=1}^7 \mathbb{I}(x_i \neq y_i)$$
+
+$$D_H(x, y) = \mathbb{I}(0 \neq 1) + \mathbb{I}(1 \neq 1) + \mathbb{I}(1 \neq 0) + \mathbb{I}(0 \neq 0) + \mathbb{I}(1 \neq 0) + \mathbb{I}(0 \neq 1) + \mathbb{I}(1 \neq 0)$$
+
+$$D_H(x, y) = 1 + 0 + 1 + 0 + 1 + 1 + 1$$
+
+Por lo tanto, la distancia de Hamming entre las cadenas binarias x e y es de 5. Esto significa que hay 5 posiciones en las que las cadenas difieren.
+
+
+## Distancia Jaccard
+
+Se utiliza para medir la similitud entre dos conjuntos de variables cualitativas. 
+
+La distancia de Jaccard entre dos conjuntos $A$ y $B$ se define como:
+
+$$ d_J(A,B) = 1 - \frac{|A \cap B|}{|A \cup B|} $$
+
+Donde $|A|$ representa el tamaño del conjunto $A$ y $A \cap B$ y $A \cup B$ representan la intersección y la unión de los conjuntos $A$ y $B$, respectivamente. Esta fórmula mide la distancia entre dos conjuntos basándose en la similitud entre ellos.
+
+## Ejemplo
+
+\begin{align*}
+A &= \{\text{Camilo}, \text{Sofia}, \text{Alejandro}, \text{Alexandra}\} \\
+B &= \{\text{Sofia}, \text{Alejandro}, \text{Cata}, \text{Ivan}\}
+\end{align*}
+
+
+\begin{align*}
+J(A,B) &= \frac{|A \cap B|}{|A \cup B|} \\
+&= \frac{\left|\{\text{Sofia}, \text{Alejandro}\}\right|}{\left|\{\text{Camilo}, \text{Sofia}, \text{Alejandro}, \text{Alexandra}, \text{Cata}, \text{Ivan}\}\right|} \\
+&= \frac{2}{6} \\
+&= \frac{1}{3}
+\end{align*}
+
+
+\begin{align*}
+d_J(A,B) &= 1 - \frac{|A \cap B|}{|A \cup B|} \\
+&= 1 - \frac{2}{6} \\
+&= \frac{4}{6} \\
+&= \frac{2}{3}
+\end{align*}
+
+Por lo tanto, la distancia de Jaccard entre los conjuntos A y B es $\frac{2}{3}$.
+
+
+## Distancia Gower
+
+La distancia de Gower es una medida de distancia que se utiliza en análisis multivariados para conjuntos de datos mixtos que contienen variables numéricas y categóricas. Se define como:
+
+$$ d_G(x_i, x_j) = \frac{\sum_{k=1}^{p} w_k d_{jk}}{\sum_{k=1}^{p} w_k} $$
+
+Donde $x_i$ y $x_j$ son dos objetos o individuos, $p$ es el número total de variables, $d_{jk}$ es la distancia entre las variables $k$ de $x_i$ y $x_j$, y $w_k$ es un peso que se utiliza para dar más importancia a ciertas variables en la distancia.
+
+## Ejemplo 
+
+
+
+
+## Distancias con variables cuantitativas
+
+En análisis multivariado, se utilizan diferentes métodos para medir la distancia entre observaciones con variables cuantitativas. Estas medidas de distancia son utilizadas en técnicas como análisis de componentes principales, análisis de correspondencias, análisis de conglomerados, entre otras.
+
+A continuación, se describen algunas de las medidas de distancia más comunes en análisis multivariado con variables cuantitativas:
+
+- Distancia Euclidiana
+
+- Distancia Manhattan
+
+- Distancia Mahalanobis
+
+
+## Distancia Euclidiana
+
+La distancia euclidiana es una medida de la distancia entre dos puntos en un espacio euclidiano de dos o más dimensiones.
+
+La distancia euclidiana entre dos puntos $p$ y $q$ en un espacio euclidiano de $n$ dimensiones se define como:
+
+$$ d_E(p,q) = \sqrt{\sum_{i=1}^{n} (p_i - q_i)^2} $$
+
+Donde $p_i$ y $q_i$ son las coordenadas del punto $p$ y el punto $q$ en la $i$-ésima dimensión, respectivamente.
+
+## Ejemplo 
+Supongamos que tenemos dos vectores P y Q:
+
+$p = (1, 2, 3)$ y $q = (4, 5, 6)$, entonces la distancia euclidiana entre $p$ y $q$ es:
+
+$$ d_E(p,q) = \sqrt{(1-4)^2 + (2-5)^2 + (3-6)^2} = \sqrt{27} \approx 5.196 $$
+
+## Distancia Manhattan
+
+La distancia de Manhattan es una medida de distancia entre dos puntos en un espacio euclidiano de n dimensiones, mide la distancia que hay que recorrer para ir de un punto a otro si sólo se permiten movimientos en línea recta horizontal o vertical.La fórmula para calcular la distancia de Manhattan es la siguiente:
+
+$$ D_M(x, y) = \sum_{i=1}^{n} |x_i - y_i| $$
+
+Donde $x$ y $y$ son los vectores que se van a comparar, $n$ es el número de dimensiones y $|x_i - y_i|$ representa la diferencia absoluta entre la coordenada $i$ de $x$ y la coordenada $i$ de $y$.
+
+## Ejemplo
+
+Supongamos que tenemos dos vectores X y Y:
+
+$x = (1, 2, 3)$ y $y = (4, 5, 6)$, entonces la distancia Manhattan entre $x$ y $y$ es:
+
+$$ D_M(x) = |1 - 4| + |2 - 5| + |3 - 6| = 9 $$
+
+## Distancia Mahalanobis
+
+La distancia de Mahalanobis es una medida de la distancia entre un punto y un conjunto de puntos, teniendo en cuenta la covarianza entre las variables. La fórmula para calcular la distancia de Mahalanobis es la siguiente:
+
+$$ D_M(x) = \sqrt{(x - \mu)^T \Sigma^{-1} (x - \mu)} $$
+
+Donde $x$ es el vector de variables, $\mu$ es el vector de medias y $\Sigma$ es la matriz de covarianza.
+
+Donde $p_i$ y $q_i$ son las coordenadas del punto $p$ y el punto $q$ en la $i$-ésima dimensión, respectivamente.
+
+## Ejemplo
+
+En el siguiente ejmplo se utiliza la distancia de Mahalanobis para detectar valores atípicos en un conjunto de datos simulado de características de televisores.lo que puede ayudar a detectar problemas en la producción o a tomar decisiones de marketing y precios más informadas.
+
+```{r}
+library(knitr)
+library(kableExtra)
+
+# Crear un dataframe con las características de los televisores
+tv_data <- data.frame(
+  marca = c("Samsung", "LG", "Sony", "TCL", "Panasonic", "Hisense", "Vizio", "Toshiba", "Sharp", "Philips"),
+  modelo = c("Q90T", "CX", "X950H", "4-Series", "GX850", "H9G", "M-Series", "Fire TV", "LC", "5800"),
+  tamano_pantalla = c(55, 65, 75, 43, 65, 55, 65, 50, 60, 55),
+  precio = c(2000, 2500, 3000, 500, 1500, 1000, 1200, 700, 800, 900)
+)
+
+# Calcular la matriz de covarianza de las variables
+cov_matrix <- cov(tv_data[, c("tamano_pantalla", "precio")])
+
+# Calcular la distancia mahalanobis para cada televisor
+distri_maha <- mahalanobis(tv_data[, c("tamano_pantalla", "precio")], center = colMeans(tv_data[, c("tamano_pantalla", "precio")]), cov = cov_matrix)
+
+# Agregar la distancia mahalanobis al dataframe original
+tv_data$distri_maha <- distri_maha
+
+# Encontrar los televisores con la distancia mahalanobis más grande
+outliers <- tv_data[order(-tv_data$distri_maha), ]
+
+# Generar la tabla de outliers con kable y kableExtra
+outliers %>%
+  kable(format = "html", caption = "Televisores con mayor distancia Mahalanobis") %>%
+  kable_styling(bootstrap_options = "striped", full_width = F) %>%
+  column_spec(1, bold = T) %>%
+  column_spec(2:4, background = "#f7f7f9")
+```
+
+Tras analizar los resultados obtenidos, se ha comprobado que los televisores de las marcas Sony y TCL presentan una mayor distancia con respecto a la media, por otro lado, los televisores de las marcas Toshiba, Panasonic y Philips se ubican más cercanos a la media.
+
+## Distancias con variables mixtas
+
+En el análisis multivariado con variables mixtas, es decir, cuando se tienen tanto variables continuas como categóricas, existen diversas opciones para medir la distancia entre los objetos o individuos en el espacio multidimensional de las variables.
+
+Algunas de las medidas de distancia más comunes son:
+
+-  Distancia euclidiana
+
+-  Distancia Gower
+
+-  Distancia Mahalanobis
+
+-  Distancia Jaccard
+
+
+
+## Tabla
+
+En la siguiente tabla se encuentra una sintesis donde resume las distancias y sus respectivos tipos, es decir, si es cualitativo, cuantitativo y/o mixto.
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(kableExtra)
+library(grid)
+library(gtable)
+suppressWarnings(library(gridExtra))
+suppressWarnings(library(tibble))
+
+tabla_cuadricula <- matrix(c("Cualitativo", "✓", "✓", "", "", "", "",
+                             "Cuantitativo", "", "", "", "✓", "", "✓",
+                             "Mixto", "", "", "✓", "", "", ""), 
+                           nrow = 3, byrow = TRUE)
+
+colnames(tabla_cuadricula) <- c("Tipos", "Hamming", "Jaccard", "Gower", "Euclidiana", "Manhattan", "Mahalanobis")
+
+tabla_cuadricula <- as.data.frame(tabla_cuadricula)
+
+tabla_cuadricula[tabla_cuadricula == "✓"] <- "✓"
+tabla_cuadricula[tabla_cuadricula == ""] <- ""
+tabla_cuadricula[tabla_cuadricula$Tipos == "Cuantitativo", "Manhattan"] <- "✓"
+
+tabla_cuadricula <- as_tibble(tabla_cuadricula)
+
+tema <- ttheme_default(
+  core=list(
+    bg_params=list(fill=c("white", "#DDDDDD")),
+    fg_params=list(fontface=c(1,0), fontsize=c(11,11)),
+    hjust=c("center","center","center","center","center","center","center")
+  )
+)
+
+# Crear la tabla usando kableExtra y correrla hacia arriba
+kable(tabla_cuadricula, "html") %>%
+  kable_styling(bootstrap_options = "striped", full_width = F) %>%
+  scroll_box(height = "200px", width = "100%")
+```
+
+## EJERCICIO CRIS
+\begin{aligned}
+p(\tilde{y} \mid y) &= \int p(\tilde{y}, \theta \mid y) d\theta \\
+&= \int p(\tilde{y} \mid \theta, y) p(\theta \mid y) d\theta \\
+&= \int \mathcal{N}(\tilde{y} \mid \theta, \sigma^2) \mathcal{N}(\theta \mid m_n, s_n^2) d\theta \\
+&= \frac{1}{\sqrt{2\pi \sigma^2}} \int \exp \left[ -\frac{(\tilde{y} - \theta)^2}{2\sigma^2} \right] \frac{1}{\sqrt{2\pi s_n^2}} \exp \left[ -\frac{(\theta - m_n)^2}{2s_n^2} \right] d\theta \\
+&= \frac{1}{\sqrt{2\pi \sigma^2 s_n^2}} \int \exp \left[ -\frac{1}{2\sigma^2} \left( \tilde{y}^2 - 2\tilde{y}\theta + \theta^2 \right) -\frac{1}{2s_n^2} \left( \theta^2 - 2\theta m_n + m_n^2 \right) \right] d\theta \\
+&= \frac{1}{\sqrt{2\pi \sigma^2 s_n^2}} \int \exp \left[ -\frac{1}{2\sigma^2} \left( \theta^2 - 2\tilde{y}\theta + \tilde{y}^2 + \theta^2 - 2\theta m_n + m_n^2 \right) \right] d\theta \\
+&= \frac{1}{\sqrt{2\pi \sigma^2 s_n^2}} \int \exp \left[ -\frac{1}{2} \left( \frac{\theta^2}{\sigma^2} - 2\frac{\tilde{y}}{\sigma^2} \theta + \frac{\tilde{y}^2}{\sigma^2} + \frac{\theta^2}{s_n^2} - 2\frac{m_n}{s_n^2} \theta + \frac{m_n^2}{s_n^2} \right) \right] d\theta \\
+&= \frac{1}{\sqrt{2\pi \sigma^2 s_n^2}} \exp \left[ -\frac{1}{2} \left( \frac{\tilde{y}^2}{\sigma^2} + \frac{m_n^2}{s_n^2} \right) \right] \int \exp \left[ -\frac{1}{2} \left( \frac{1}{\sigma^2} + \frac{1}{s_n^2} \right) \left( \theta - \frac{\tilde{y}}{\sigma^2} - \frac{m_n}{s_n^2} \right)^2 \right] d\theta \\
+&= \frac{1}{\sqrt{2\pi \sigma^2 s_n^2}} \exp \left[ -\frac{1}{2} \
+
+
