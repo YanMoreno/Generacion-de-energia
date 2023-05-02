@@ -1,0 +1,293 @@
+---
+title: "Energía"
+author: "Diana Hernández, Yan Guerra"
+date: "2023-03-16"
+output: html_document
+---
+
+```{r setup, include=T}
+knitr::opts_chunk$set(echo = F, warning = F, message = F)
+```
+La generación de energía se refiere al proceso de producir la cantidad necesaria de energía para satisfacer las necesidades de la sociedad. Esta energía puede adoptar diversas formas, como electricidad, calor, combustibles líquidos o gaseosos, entre otras. Para llevar a cabo este proceso se utilizan diferentes fuentes de energía primaria, como el petróleo, el gas natural, el carbón, la energía nuclear, la energía hidroeléctrica, la energía solar, la energía eólica, entre otras. La elección de la fuente depende de varios factores, como la disponibilidad, la accesibilidad, la tecnología y la regulación. La generación de energía es esencial para la sociedad moderna, ya que permite realizar actividades cotidianas como iluminar hogares, transportar personas y bienes, procesar alimentos y producir bienes y servicios. Sin embargo, también puede tener impactos significativos en el medio ambiente y en la sociedad, como la emisión de gases de efecto invernadero, la contaminación del aire y del agua, y la alteración de ecosistemas naturales.
+
+Partiendo de la información anterior, se llevó a cabo un análisis multivariado que involucró a 141 países y 12 formas de generación de energía. El objetivo fue mostrar cómo cada país genera energía, teniendo en cuenta las siguientes formas de generación:
+```{r}
+setwd("~/Downloads")
+library(readxl)
+library(knitr)
+Tabla_generacion <- read_excel("Tabla generación.xlsx")
+colnames(Tabla_generacion) <- c("Generación de Energía","Generación de Energía")
+kable(Tabla_generacion)
+```
+- Carbón:La generación de energía con carbón implica la quema del carbón en una caldera para producir vapor que mueve una turbina y genera electricidad. Este proceso es altamente contaminante ya que emite grandes cantidades de dióxido de carbono y otros contaminantes, contribuyendo significativamente al cambio climático y teniendo efectos negativos en la salud y el medio ambiente.
+
+<div>
+<p style = 'text-align:center;'>
+<img src="https://w7.pngwing.com/pngs/1011/651/png-transparent-charcoal-cleanser-activated-carbon-face-toothpaste-face-face-people-rock.png" alt="JuveYell" width="300px">
+</p>
+</div>
+
+- Aceite:La generación de energía con aceite implica la quema del combustible líquido en una caldera para producir vapor que mueve una turbina y genera electricidad. Aunque es menos contaminante que la generación de energía con carbón, aún produce emisiones de gases de efecto invernadero y otros contaminantes que pueden tener efectos negativos en la salud y el medio ambiente. 
+
+<div>
+<p style = 'text-align:center;'>
+<img src="data:image/jpeg;base64,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" alt="JuveYell" width="300px">
+</p>
+</div>
+
+- Gas:La generación de energía con gas implica la quema de gas natural en una central eléctrica para producir electricidad. El gas natural se extrae de yacimientos subterráneos y se transporta a través de tuberías hasta la central eléctrica. Allí, el gas se quema en una turbina o en una caldera para producir vapor que mueve una turbina y genera electricidad. La generación de energía con gas natural es una alternativa más limpia que la generación de energía con carbón o petróleo, ya que produce menos emisiones de gases de efecto invernadero y otros contaminantes. Además, el gas natural es una fuente de energía relativamente abundante y fácil de transportar, lo que lo convierte en una opción popular para la generación de electricidad.
+
+<div>
+<p style = 'text-align:center;'>
+<img src="https://www.portafolio.co/files/article_multimedia/uploads/2020/06/17/5eead10d15cfc.jpeg" alt="JuveYell" width="300px">
+</p>
+</div>
+
+- Biocombustibles:La generación de energía con biocombustibles implica el uso de materiales orgánicos, como madera, cultivos energéticos, residuos de la agricultura o de la industria alimentaria, y otros residuos biodegradables para producir electricidad. En este proceso, los materiales orgánicos se queman en una caldera para producir vapor que mueve una turbina y genera electricidad. Los biocombustibles son una alternativa más sostenible y renovable a los combustibles fósiles, ya que su producción y uso emiten menos gases de efecto invernadero y otros contaminantes. Además, el uso de biocombustibles puede ayudar a reducir la cantidad de residuos orgánicos que van a los vertederos y contribuyen a la contaminación del suelo y el agua.
+
+<div>
+<p style = 'text-align:center;'>
+<img src="https://ovacen.com/wp-content/uploads/2022/09/cadena-suministro-biocombustibles.jpg" alt="JuveYell" width="300px">
+</p>
+</div>
+
+- Desperdicios:La generación de energía con desperdicios implica el uso de materiales orgánicos y no orgánicos, como basura, desechos de la industria alimentaria, entre otros, para producir electricidad. Los residuos se queman en una caldera para producir vapor que mueve una turbina y genera electricidad, lo que no solo permite obtener energía, sino que también reduce la cantidad de residuos que van a los vertederos y contribuyen a la contaminación del suelo y el agua. La generación de energía a partir de residuos puede ser una alternativa más sostenible y renovable a los combustibles fósiles, ya que su producción y uso emiten menos gases de efecto invernadero y otros contaminantes. Sin embargo, la gestión adecuada de los residuos y la prevención de su generación son fundamentales para reducir su impacto ambiental.
+
+<div>
+<p style = 'text-align:center;'>
+<img src="https://www.certificadosenergeticos.com/wp-content/uploads/2014/09/Combustibles-ecologicos-a-partir-de-residuos-300x150.jpg" alt="JuveYell" width="300px">
+</p>
+</div>
+
+- Nuclear:La generación de energía nuclear implica la fusión de átomos de uranio o plutonio en un reactor nuclear para generar calor. Este calor se utiliza para producir vapor que mueve una turbina y genera electricidad. A diferencia de los combustibles fósiles, la energía nuclear no emite dióxido de carbono ni otros gases de efecto invernadero, lo que la convierte en una fuente de energía con bajas emisiones de carbono. Sin embargo, la energía nuclear también presenta riesgos, como la posibilidad de accidentes nucleares y la producción de residuos nucleares altamente peligrosos que deben ser almacenados durante cientos de miles de años. Debido a estos riesgos, la generación de energía nuclear es controvertida y se discute su seguridad y su impacto ambiental a largo plazo.
+
+<div>
+<p style = 'text-align:center;'>
+<img src="https://cdn0.ecologiaverde.com/es/posts/4/1/1/ventajas_y_desventajas_de_la_energia_nuclear_1114_orig.jpg" alt="JuveYell" width="300px">
+</p>
+</div>
+
+- Hidro:La generación de energía hidroeléctrica implica la construcción de una presa para retener una gran cantidad de agua y liberarla de manera controlada a través de turbinas, generando energía mecánica que se transforma en electricidad mediante un generador. La energía hidroeléctrica es una forma de energía renovable y limpia que no emite gases de efecto invernadero ni otros contaminantes. Sin embargo, la construcción de presas y el represamiento de ríos pueden tener impactos significativos en el medio ambiente y la vida de las comunidades que dependen del río.
+
+<div>
+<p style = 'text-align:center;'>
+<img src="https://www.fundacionaquae.org/wp-content/uploads/2014/08/Energ%C3%ADa-hidráulica-1024x683.jpg.webp" alt="JuveYell" width="300px">
+</p>
+</div>
+
+- Geotermica:La generación de energía geotérmica consiste en la extracción de calor del interior de la Tierra a través de la perforación de pozos hasta llegar a reservorios de agua caliente y vapor en la corteza terrestre, y luego utilizar el vapor extraído para mover una turbina y producir electricidad. Es una fuente de energía renovable y limpia que no emite gases de efecto invernadero ni otros contaminantes, pero su construcción y operación pueden tener impactos ambientales y la disponibilidad de esta fuente de energía está limitada a ciertas regiones geográficas.
+
+<div>
+<p style = 'text-align:center;'>
+<img src="https://www.lampadia.com/assets/uploads_images/images/Central_Geotermica.jpg" alt="JuveYell" width="300px">
+</p>
+</div>
+
+- Energía Solar Fotovoltaica: La generación de energía solar fotovoltaica convierte la luz solar en electricidad utilizando paneles solares compuestos por celdas solares semiconductoras que liberan electrones cuando son expuestas a la luz. La energía solar es una fuente de energía renovable y limpia que no emite gases de efecto invernadero ni otros contaminantes, y su instalación en pequeña escala permite su uso en zonas remotas y en aplicaciones descentralizadas. No obstante, el costo inicial de instalación puede ser elevado y su eficiencia está limitada por factores como la intensidad de la luz solar y las condiciones climáticas.
+
+<div>
+<p style = 'text-align:center;'>
+<img src="https://www.areatecnologia.com/electricidad/imagenes/energia-solar-fotovoltaica.jpg" alt="JuveYell" width="300px">
+</p>
+</div>
+
+- Solar térmica: La generación de energía solar térmica se realiza a través de paneles solares que calientan un fluido, generalmente agua, para producir vapor y generar electricidad mediante una turbina. La energía solar térmica es una forma de energía renovable y limpia que no emite gases de efecto invernadero ni otros contaminantes en su proceso de generación, y es altamente eficiente en zonas con alta radiación solar. No obstante, su eficiencia está limitada por factores como la intensidad de la luz solar, la temperatura ambiente y la calidad de los materiales utilizados en los paneles solares térmicos.
+
+<div>
+<p style = 'text-align:center;'>
+<img src="https://www.cambioenergetico.com/blog/wp-content/uploads/termica-vs-solar.png" alt="JuveYell" width="300px">
+</p>
+</div>
+
+- Viento: La generación de energía con viento implica la conversión de la energía cinética del viento en electricidad mediante el uso de turbinas eólicas. La energía eólica es una forma de energía renovable y limpia que no emite gases de efecto invernadero ni otros contaminantes en su proceso de generación, y es adecuada para su uso en zonas remotas o urbanas. Sin embargo, la eficiencia de la energía eólica está limitada por factores como la velocidad del viento y la ubicación geográfica de los parques eólicos.
+
+<div>
+<p style = 'text-align:center;'>
+<img src="https://www.celec.gob.ec/gensur/images/recirculacion1.png" alt="JuveYell" width="300px">
+</p>
+</div>
+
+- Mareas: La generación de energía con mareas se basa en la utilización de la energía cinética generada por el movimiento de las mareas para producir electricidad. La energía de las mareas es una forma de energía renovable y limpia que no emite gases de efecto invernadero ni otros contaminantes en su proceso de generación, y es predecible y constante. Sin embargo, la eficiencia de la generación de energía con mareas está limitada por la ubicación geográfica, ya que solo es viable en zonas cercanas al mar con grandes fluctuaciones en el nivel del agua.
+
+<div>
+<p style = 'text-align:center;'>
+<img src="https://www.textoscientificos.com/imagenes/energia/energia-mareas.gif" alt="JuveYell" width="300px">
+</p>
+</div>
+
+Para llevar a cabo nuestro proyecto, en primera instacia contamos con una base de datos la cual está conformada por 141 países y la información presentada es la cantidad de energía que produce cada uno de ellos a través de 12 medios de generación.
+```{r,warning=FALSE, cache=FALSE, message=FALSE, eval=TRUE}
+setwd("~/Downloads")
+library(tidyverse)
+library(GGally)
+library(corrplot)
+library(knitr)
+
+energia <- read_csv2("Generación de Energía Full.csv")
+names(energia) [1] <- "País"
+```
+
+```{r}
+#Eliminación de la columna con los países y reasignación de modo que sea el nombre de cada una de las filas.
+energia2<- data.frame(energia, row.names = energia$País)
+energia2 <- energia2[,-c(1)]
+
+energia$País[c(66,73,74,76,99,100,101,119,120,127,131,136)] <- str_replace(energia$País[c(66,73,74,76,99,100,101,119,120,127,131,136)],"\x8e","á")
+energia$País[c(12,13,21,88)] <- str_replace(energia$País[c(12,13,21,88)],"\x8e","é")
+energia$País[c(14,48,58,62,80,95,132)] <- str_replace(energia$País[c(14,48,58,62,80,95,132)],"\x8e","í")
+energia$País[c(72)] <- str_replace(energia$País[c(72)],"\x8e","ó")
+energia$País[c(24,103,108,109,110,111,130)] <- str_replace(energia$País[c(24,103,108,109,110,111,130)],"\x8e","ú")
+energia$País[c(42,123)] <- str_replace(energia$País[c(42,123)],"\x8e","Á")
+energia$País[c(46)] <- str_replace(energia$País[c(46)],"\x8e","ñ")
+
+kable((energia[1:6,]))
+```
+
+## Normalización
+
+La normalización es un proceso estadístico que se utiliza para escalar valores en un conjunto de datos a una escala común. El objetivo de la normalización es eliminar el efecto de la escala de las variables, para que las variables estén en la misma escala y puedan ser comparadas de manera justa. 
+
+Haciendo uso del mínimo y máximo podemos llevar un conjunto de datos a una escala común. En este caso, los valores se escalan entre 0 y 1, de manera que el valor mínimo en el conjunto de datos se convierte en 0 y el valor máximo se convierte en 1. Su fórmula es:
+
+$$Normalizacion=\frac{(x-min(x))}{max(x)-min(x)}$$
+
+
+```{r}
+#aplicacion  de la normalizacion al data frame
+energia_norm<- energia2 |> 
+  map_df(~(.-min(.))/(max(.)-min(.))) #Aplicamos a cada uno de los datos por medio de programacion funcional la formula de normalizacion
+
+#analisis de componentes principales a los datos normalizados
+acp_norm <- prcomp(energia_norm)
+summary(acp_norm)
+
+```
+
+<div style="text-align:center">
+```{r}
+plot(acp_norm,col="#FF83FA", main="Variabilidad por cada componente, dataset normalizado")
+```
+</div>
+
+La normalización utilizando mínimo y máximo también se conoce como "escalado entre 0 y 1". Esta técnica es útil para comparar valores en diferentes conjuntos de datos y para garantizar que las variables estén en la misma escala antes de aplicar ciertas técnicas de análisis estadístico, como la regresión y el análisis de componentes principales (PCA).
+
+## Estandarizacion 
+
+
+La estandarización es un proceso estadístico que se utiliza para transformar valores en un conjunto de datos de manera que tengan una media de cero y una desviación estándar de uno. El objetivo de la estandarización es eliminar el efecto de la escala y centrar los datos en torno a cero, lo que permite comparar variables que tienen diferentes unidades de medida.
+
+La estandarización se realiza restando la media del conjunto de datos a cada valor individual y dividiendo el resultado por la desviación estándar. Esto tiene el efecto de "centrar" los datos en torno a cero y de "escalar" los datos para que tengan una desviación estándar de uno.  Su fórmula es:
+
+$$(Z)=\frac{x-μ}{σ}$$
+
+```{r}
+energia_estan <- energia2|>
+  map_df(~(.-mean(.)/sd(.)))
+acp_estan <- prcomp(energia_estan)
+summary(acp_estan)
+```
+
+<div style="text-align:center">
+```{r}
+plot(acp_estan,col="#54FF9F",main="Variabilidad por cada componente, dataset estandarizado")
+```
+</div>
+
+La estandarización es una técnica comúnmente utilizada en el análisis estadístico para comparar variables que tienen diferentes unidades de medida y para identificar valores extremos o atípicos en un conjunto de datos. También se utiliza en la construcción de modelos estadísticos, como el análisis discriminante y la regresión logística, donde las variables deben estar en la misma escala para poder comparar sus efectos en el modelo.
+
+## Porcentajes
+
+La estandarización por medio de porcentajes es una técnica estadística que se utiliza para comparar variables que están en diferentes escalas y unidades de medida. En lugar de trabajar con los valores crudos de las variables, la estandarización por medio de porcentajes convierte los valores en porcentajes para que se puedan comparar de manera más adecuada. Este método consiste en dividir cada un de los valores de la variables entre el total de producción de energía:
+
+
+$$Porcentajes=\frac{X_i}{Total}$$
+```{r,warning=FALSE}
+total <- energia$Coal+energia$Oil+energia$Gas+energia$Biofuels+energia$Waste+
+  energia$Nuclear+energia$Hydro+energia$Geothermal+energia$`Solar PV`+energia$`Solar thermal`+
+  energia$Wind+energia$Tide
+
+energia_3 <- data.frame(energia, total)
+
+```
+
+La estandarización por medio de porcentajes es útil para comparar variables que tienen diferentes unidades de medida, diferentes escalas o diferentes magnitudes. Por ejemplo, se puede utilizar para comparar el número de ventas de diferentes productos o marcas, o para comparar los ingresos de diferentes empresas que operan en diferentes mercados o regiones.
+
+```{r,warning=FALSE}
+porcentajes <- energia
+
+for(i in 2:13) {
+  porcentajes[, i] <- energia_3[,-1][, i-1]/energia_3[, 14]
+}
+
+porcentajes_2 <- porcentajes |>
+  select(-1)
+
+rownames(porcentajes_2) <- energia$País
+
+acp_pct <- prcomp(porcentajes_2)
+summary(acp_pct)
+```
+
+<div style="text-align:center">
+```{r}
+plot(acp_pct,col="#98F5FF",main="Variabilidad por cada componente, dataset de porcentajes")
+```
+</div>
+
+Finalmente, evidenciamos gráficamente el comportamiento de cada uno de los distintos métodos utilizados para poder determinar cuál es la mejor opción y llegar a conclusiones verídicas en cuanto a la generación de energía.
+
+```{r}
+
+dataframe <- data.frame(normalizado=acp_norm$sdev^2,
+                        estandarizado=acp_estan$sdev^2,
+                        porcentaje=acp_pct$sdev^2)|>
+  mutate(eje=1:12)
+dataframe
+```
+
+<div style="text-align:center">
+```{r}
+gnorm <- ggplot(dataframe,aes(eje,normalizado))+
+  geom_col(fill="#FF83FA")
+gestan <- ggplot(dataframe,aes(eje,estandarizado))+
+  geom_col(fill="#54FF9F")
+gporcen <- ggplot(dataframe,aes(eje,porcentaje))+
+  geom_col(fill="#98F5FF")
+
+library(patchwork)
+gnorm / gestan / gporcen
+```
+</div>
+
+Seguido a esto, vamos a evaluar las correlaciones 
+```{r}
+energianorm <- data.frame(energia2,acp_norm$x[,1:4])
+cornorm <- cor(energianorm)
+corrplot::corrplot(cornorm,title = "Normalizado",type = "upper",
+                   diag = F, method = "ellipse",tl.col="black",
+                   tl.cex=0.8) #titulo, color de letras, tamaño de las letras
+```
+
+Evidenciamos que el 1 componente principal que se relaciona fuertemente con oil, luego se relaciona con Geothermal y solar thermal, posteriormente se relaciona con hydro, nuclear, gas y coal. Finalmente se relaciona con biofuels, waste, solar.PV y Wind. Todas las relaciones son positivas.
+
+Evidenciamos que el 2 componente principal que se relaciona fuertemente con coal, biofuels, solar.PV y Wind postivamente mientras que negativamente se relaciona con Tide, nuclear, solar.themal luego y Oil, por otro lado se relaciona con Geothermal, nuclear y gas negativamente, mientras que positivamente hydro y coal.
+
+Evidenciamos que el 3 componente principal que se relaciona fuertemente con coal, hydro, wind y solar.PV positivamente, negativamente 
+```{r}
+
+energiaestan <- data.frame(energia2,acp_estan$x[,1:4])
+corestan <- cor(energiaestan)
+corrplot::corrplot(corestan,title = "Estandarizado",type = "upper",
+                   diag = F, method = "ellipse",tl.col="black",
+                   tl.cex=0.8) 
+
+energiapct <- data.frame(energia2,acp_pct$x[,1:4])
+corpct <- cor(energiapct)
+corrplot::corrplot(corpct, title="Porcentajes",type = "upper",
+                   diag = F, method = "ellipse",tl.col="black",
+                   tl.cex=0.8) 
+```
+
+
+
+
